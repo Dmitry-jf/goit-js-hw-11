@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image search</title>
-    <link rel="stylesheet" href="/src/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,29 +11,25 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/goit-js-hw-11/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-D8hBcPQM.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-CWKLx11g.css">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-Dl93e5bA.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-CYMld6vM.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-DumFYO8Z.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/index-D_aEXp-B.css">
   </head>
   <body>
     <main>
-      <form class="form" id="search-form" autocomplete="off">
+      <form class="form">
         <label>
           <input
             type="text"
             name="search-text"
-            id="search-text"
             placeholder="Search images..."
             required
           />
         </label>
         <button type="submit">Search</button>
       </form>
-      <div id="loader" class="loader">
-        <div class="css-loader">Loading images, please wait...</div>
-      </div>
-
-      <ul class="gallery" id="gallery"></ul>
+      <div class="loader hidden">Loading images, please wait...</div>
+      <ul class="gallery"></ul>
     </main>
 
   </body>
