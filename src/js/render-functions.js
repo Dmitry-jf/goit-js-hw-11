@@ -1,30 +1,28 @@
+// - розмітка
 
 import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css"; 
+import "simplelightbox/dist/simple-lightbox.min.css";
 
+export const gallery = document.querySelector(".gallery");
+export const loader = document.querySelector(".loader");
 
-const galleryEl = document.getElementById("gallery");
-const loaderEl = document.getElementById("loader");
-
-
-const lightbox = new SimpleLightbox(".gallery a", {
-  captions: true,
+export const lightbox = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
-  captionDelay: 250,
+  captionDelay: 150,
 });
 
-/**
- * 
- * @param {Array} images 
- */
 export function createGallery(images) {
-  if (!Array.isArray(images) || images.length === 0) return;
-
-
-  const markup = images
-    .map(img => {
-      const { webformatURL, largeImageURL, tags, likes, views, comments, downloads } = img;
-      return `
+ const markup = images
+     .map(
+        ({
+          webformatURL,
+          largeImageURL,
+          tags,
+          likes,
+          views,
+          comments,
+          downloads,
+        }) => `
 <li class="photo-card">
   <a href="${largeImageURL}" class="gallery-link" aria-label="${tags}">
     <img src="${webformatURL}" alt="${tags}" loading="lazy" />
@@ -35,26 +33,23 @@ export function createGallery(images) {
     <p class="info-item"><b>Comments</b><span>${comments}</span></p>
     <p class="info-item"><b>Downloads</b><span>${downloads}</span></p>
   </div>
-</li>`;
-    })
-    .join("");
-
-  galleryEl.insertAdjacentHTML("beforeend", markup);
-
+</li>`
+    )
+    .join('');
+    
+    
+  gallery.innerHTML = markup;
   lightbox.refresh();
 }
-
-
-export function clearGallery() {
-  galleryEl.innerHTML = "";
+  
+ export function clearGallery() {
+  gallery.innerHTML = "";
 }
 
 export function showLoader() {
-  if (!loaderEl) return;
-  loaderEl.classList.add("is-active");
+  loader.classList.remove("hidden");
 }
 
 export function hideLoader() {
-  if (!loaderEl) return;
-  loaderEl.classList.remove("is-active");
+  loader.classList.add("hidden");
 }
